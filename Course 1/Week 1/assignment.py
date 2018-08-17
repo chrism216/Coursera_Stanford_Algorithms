@@ -9,7 +9,7 @@ def karatsuba(x, y):
 
     else:  
         numsize = int(max(math.log10(x), math.log10(y))) + 1 #size of biggest number
-        n = math.ceil(numsize / 2)
+        n = math.ceil(numsize / 2)  #size of numbers to the right of the cut
 
         a, b = int(str(x).zfill(numsize)[:numsize//2]), int(str(x).zfill(numsize)[numsize//2:])
         c, d = int(str(y).zfill(numsize)[:numsize//2]), int(str(y).zfill(numsize)[numsize//2:])
