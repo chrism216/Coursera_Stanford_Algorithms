@@ -6,7 +6,6 @@ def merge_sort(mylist):
 
     else:    
         half = len(mylist) // 2
-        print(half, mylist[:half], mylist[half:])
         left, right = merge_sort(mylist[:half]), merge_sort(mylist[half:])
 
 
