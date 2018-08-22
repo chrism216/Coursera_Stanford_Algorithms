@@ -1,13 +1,14 @@
 import random
 
-def merge_sort(mylist):
+def count_inversions(mylist, inversions=[]):
     if len(mylist) == 1:
-        return mylist
-
+        return mylist, inversions
+    
     else:    
         half = len(mylist) // 2
-        left, right = merge_sort(mylist[:half]), merge_sort(mylist[half:])
-
+        left, left_inversions = count_inversions(mylist[:half])
+        right, right_inversions = count_inversions(mylist[half:])
+        inversions = left_inversions + right_inversions
 
         i, j = 0, 0
         ordered_list = []
@@ -21,15 +22,17 @@ def merge_sort(mylist):
                     break
             elif left[i] > right[j]:
                 ordered_list.append(right[j])
+                for k in left[i:]:
+                    inversions.append((right[j], k))
                 j += 1
                 if j == len_r: #ran out of numbers in right list
                     ordered_list += left[i:]
                     break
-    return ordered_list
+    return ordered_list, inversions
 
 #Example
-n = 10 #array length
+n = 8 #array length
 mylist = [random.randrange(0, n) for x in range(n)]
 
 print(mylist)
-print(merge_sort(mylist))
+print("Ordered list: %s - Inversions: %s" %(count_inversions(mylist)))
