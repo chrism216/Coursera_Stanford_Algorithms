@@ -16,9 +16,9 @@ def s_matmul(m1, m2):
         pad_size = 2**math.ceil(math.log2(n)) - n
         m1 = np.pad(m1, [(0, pad_size), (0, pad_size)], 'constant')
         m2 = np.pad(m2, [(0, pad_size), (0, pad_size)], 'constant')
-        n = m1.shape[0]
 
         # find quadrants of m1 and m2
+        n = m1.shape[0]
         half = n // 2
         a = m1[:half, :half]
         b = m1[:half, half:]
