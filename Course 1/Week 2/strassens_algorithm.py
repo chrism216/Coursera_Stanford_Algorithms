@@ -3,7 +3,8 @@ import math
 import numpy as np
 
 def s_matmul(m1, m2):
-    # Check input
+    # This is an example implementation, only works for n x n matrices.
+    # It's possible to implement n x m.
     if m1.shape != m2.shape or m1.shape[0] != m1.shape[1]:
         raise ValueError("Matrices must be square and of equal size")
     
