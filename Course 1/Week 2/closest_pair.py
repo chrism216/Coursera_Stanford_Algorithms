@@ -12,7 +12,6 @@ def closest_pair_brute(points):
                 curr_dist = euclidian_dist(points[i], points[j])
                 if curr_dist < distance or distance < 0:
                     distance = curr_dist
-                    pair = [points[i], points[j]]
     return distance
 
 def closest_pair(points):
