@@ -21,3 +21,4 @@ def karatsuba(x, y):
         return result
         
 print(karatsuba(a, b))
+print(a*b)
