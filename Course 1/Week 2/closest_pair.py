@@ -44,4 +44,4 @@ points = points[points[:,0].argsort()]
 
 print(closest_pair(points))
 print(closest_pair_brute(points))
-# It's much faster then the brute force approach!
+# It's much faster then the brute force approach...
