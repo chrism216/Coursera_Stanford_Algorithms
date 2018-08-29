@@ -34,13 +34,13 @@ def closest_pair(points):
                     dist_sy = euclidian_dist(Sy[k], Sy[c])
     return min(dist_sy, distance)
 
+if __name__ == "__main__":
+    # Generate list of random points
+    n = 1000
 
-# Generate list of random points
-n = 1000
+    points = np.random.uniform(low=0, high=10, size=(n, 2))
+    points = points[points[:,0].argsort()]
 
-points = np.random.uniform(low=0, high=10, size=(n, 2))
-points = points[points[:,0].argsort()]
-
-print(closest_pair(points))
-print(closest_pair_brute(points))
-# It's much faster then the brute force approach...
+    print(closest_pair(points))
+    print(closest_pair_brute(points))
+    # It's much faster then the brute force approach...

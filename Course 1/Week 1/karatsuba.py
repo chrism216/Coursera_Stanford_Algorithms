@@ -1,8 +1,5 @@
 import math
 
-a = 3141592653589793238462643383279502884197169399375105820974944592
-b = 2718281828459045235360287471352662497757247093699959574966967627
-
 def karatsuba(x, y):
     if x < 10 or y < 10:
         return x * y
@@ -19,6 +16,11 @@ def karatsuba(x, y):
         result  = ac * (10 ** (n * 2)) + third_term * (10 ** n) + bd
 
         return result
-        
-print(karatsuba(a, b))
-print(a*b)
+
+
+if __name__ == "__main__":
+    a = 1234
+    b = 5678
+
+    print(karatsuba(a, b))
+    print(a*b)

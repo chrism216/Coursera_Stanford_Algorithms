@@ -7,25 +7,28 @@ def merge_sort(mylist):
     else:    
         half = len(mylist) // 2
         left, right = merge_sort(mylist[:half]), merge_sort(mylist[half:])
-
-
-        i, j = 0, 0
-        ordered_list = []
-        len_l, len_r = len(left), len(right)
-        while i < len_l and j < len_r:
-            if left[i] <= right[j]:
-                ordered_list.append(left[i])
-                i += 1
-                if i == len_l: #ran out of numbers in left list
-                    ordered_list += right[j:]
-                    break
-            elif left[i] > right[j]:
-                ordered_list.append(right[j])
-                j += 1
-                if j == len_r: #ran out of numbers in right list
-                    ordered_list += left[i:]
-                    break
+        ordered_list = merge(left, right)
     return ordered_list
+
+def merge(left, right):
+    i, j = 0, 0
+    ordered_list = []
+    len_l, len_r = len(left), len(right)
+    while i < len_l and j < len_r:
+        if left[i] <= right[j]:
+            ordered_list.append(left[i])
+            i += 1
+            if i == len_l: #ran out of numbers in left list
+                ordered_list += right[j:]
+                break
+        elif left[i] > right[j]:
+            ordered_list.append(right[j])
+            j += 1
+            if j == len_r: #ran out of numbers in right list
+                ordered_list += left[i:]
+                break
+    return ordered_list
+    
 
 #Example
 n = 10 #array length
