@@ -4,22 +4,6 @@ def quicksort(mylist, pivot_type='first'):
     comparisons = partition(mylist, 0, len(mylist), pivot_type)
     return comparisons
 
-def choose_pivot(mylist, left, right, pivot_type):
-    if pivot_type == 'first':
-        # nothing to do here. pivot is already in place
-        pass
-    elif pivot_type == 'last':
-        mylist[left], mylist[right - 1] = mylist[right - 1], mylist[left]
-    elif pivot_type == 'median':
-        mid = left + (right - left - 1) // 2
-        if (mylist[left] < mylist[mid] and mylist[mid] < mylist[right - 1]) or (mylist[right - 1] < mylist[mid] and mylist[mid] < mylist[left]):
-            mylist[left], mylist[mid] = mylist[mid], mylist[left]
-        elif (mylist[left] < mylist[right - 1] and mylist[right - 1] < mylist[mid]) or (mylist[mid] < mylist[right - 1] and mylist[right - 1] < mylist[left]):
-            mylist[left], mylist[right - 1] = mylist[right - 1], mylist[left]
-    elif pivot_type == 'random':
-        rand_pos = random.randint(left, right - 1)
-        mylist[left], mylist[rand_pos] = mylist[rand_pos], mylist[left]
-
 
 def partition(mylist, left, right, pivot_type, comparisons=0):
     if right - left <= 1:
@@ -37,6 +21,28 @@ def partition(mylist, left, right, pivot_type, comparisons=0):
         mylist[left], mylist[i - 1] = mylist[i - 1], mylist[left]
         comparisons += partition(mylist, left, i - 1, pivot_type) + partition(mylist, i, right, pivot_type) + right - left - 1
         return comparisons
+
+
+def choose_pivot(mylist, left, right, pivot_type):
+    if pivot_type == 'first':
+        # nothing to do here. pivot is already in place
+        pass
+    elif pivot_type == 'last':
+        mylist[left], mylist[right - 1] = mylist[right - 1], mylist[left]
+    elif pivot_type == 'median':
+        mid = left + (right - left - 1) // 2
+        if ((mylist[left] < mylist[mid] and mylist[mid] < mylist[right - 1]) 
+            or (mylist[right - 1] < mylist[mid] and mylist[mid] < mylist[left])):
+            # mid position is pivot
+            mylist[left], mylist[mid] = mylist[mid], mylist[left]
+        elif ((mylist[left] < mylist[right - 1] and mylist[right - 1] < mylist[mid]) 
+            or (mylist[mid] < mylist[right - 1] and mylist[right - 1] < mylist[left])):
+            # right position is pivot
+            mylist[left], mylist[right - 1] = mylist[right - 1], mylist[left]
+    elif pivot_type == 'random':
+        rand_pos = random.randint(left, right - 1)
+        mylist[left], mylist[rand_pos] = mylist[rand_pos], mylist[left]
+        
 
 if __name__ == "__main__":
     n = 10 #array length
