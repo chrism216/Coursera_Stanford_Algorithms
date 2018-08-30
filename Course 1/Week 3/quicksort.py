@@ -17,6 +17,9 @@ def choose_pivot(mylist, left, right, pivot_type):
             mylist[left], mylist[mid] = mylist[mid], mylist[left]
         elif (mylist[left] < mylist[right - 1] and mylist[right - 1] < mylist[mid]) or (mylist[mid] < mylist[right - 1] and mylist[right - 1] < mylist[left]):
             mylist[left], mylist[right - 1] = mylist[right - 1], mylist[left]
+    elif pivot_type == 'random':
+        rand_pos = random.randint(left, right - 1)
+        mylist[left], mylist[rand_pos] = mylist[rand_pos], mylist[left]
 
 
 def partition(mylist, left, right, pivot_type, comparisons=0):

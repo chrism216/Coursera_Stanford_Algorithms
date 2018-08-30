@@ -11,3 +11,4 @@ with open(my_file) as f:
 print(quicksort.quicksort(numbers.copy(), pivot_type='first'))
 print(quicksort.quicksort(numbers.copy(), pivot_type='last'))
 print(quicksort.quicksort(numbers.copy(), pivot_type='median'))
+print(quicksort.quicksort(numbers.copy(), pivot_type='random'))
