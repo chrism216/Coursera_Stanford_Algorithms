@@ -5,7 +5,6 @@ def quicksort(mylist, pivot_type='first'):
     return comparisons
 
 def choose_pivot(mylist, left, right, pivot_type):
-
     if pivot_type == 'first':
         # nothing to do here. pivot is already in place
         pass
