@@ -10,4 +10,4 @@ with open(my_file) as f:
         data = list(map(int, line.strip().split("\t")))
         adj[data[0]] = data[1:]
 
-print(kargerMinCut.min_cut_batch(adj))
+print(kargerMinCut.batch_karger_merge(adj))
