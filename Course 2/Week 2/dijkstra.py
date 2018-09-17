@@ -57,7 +57,8 @@ def dijkstra(graph, source_vertex=1):
     # Init heap
     dist_heap = []
     for node in graph[source_vertex]:
-        heapq.heappush(dist_heap, (graph[source_vertex][node], source_vertex, node))
+        dist = graph[source_vertex][node]
+        heapq.heappush(dist_heap, (dist, source_vertex, node))
 
     while bool(graph.keys() - explored):
         # Extract smallest unexplored item from heap
