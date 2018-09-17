@@ -1,4 +1,5 @@
 import random
+import os
 
 def count_inversions_brute(mylist):
     inversions = 0
@@ -46,12 +47,12 @@ def merge_and_count_split_inversions(left, right):
     return ordered_list, split_inversions
     
 
-#Example
 if __name__ == "__main__":
-    n = 8 #array length
-    mylist = [random.randrange(0, n) for x in range(n)]
+    this_folder = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(this_folder, 'IntegerArray.txt')
 
-    print(mylist)
+    with open(my_file) as f:
+        numbers = [int(x) for x in f]
 
-    print(count_inversions_brute(mylist))
-    print(count_inversions(mylist))
+    print(count_inversions(numbers))
+    # Don't even try brute force...

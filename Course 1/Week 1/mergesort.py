@@ -30,9 +30,9 @@ def merge(left, right):
     return ordered_list
     
 
-#Example
-n = 10 #array length
-mylist = [random.randrange(0, n) for x in range(n)]
+if __name__ == "__main__":
+    n = 1000 #array length
+    mylist = [random.randrange(0, n) for x in range(n)]
 
-print(mylist)
-print(merge_sort(mylist))
+    print(mylist)
+    print(merge_sort(mylist))

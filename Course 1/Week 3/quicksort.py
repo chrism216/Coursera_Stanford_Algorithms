@@ -49,9 +49,15 @@ def choose_pivot(mylist, left, right, pivot_type):
         
 
 if __name__ == "__main__":
-    n = 100 #array length
-    mylist = [random.randrange(0, n) for x in range(n)]
+    import os
 
-    print(mylist)
-    quicksort(mylist, pivot_type='median')
-    print(mylist)
+    this_folder = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(this_folder, 'QuickSort.txt')
+
+    with open(my_file) as f:
+        numbers = [int(x) for x in f]
+
+    print(quicksort(numbers.copy(), pivot_type='first'))
+    print(quicksort(numbers.copy(), pivot_type='last'))
+    print(quicksort(numbers.copy(), pivot_type='median'))
+    print(quicksort(numbers.copy(), pivot_type='random'))

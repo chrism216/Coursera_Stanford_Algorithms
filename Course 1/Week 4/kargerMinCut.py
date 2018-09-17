@@ -45,13 +45,15 @@ def batch_karger_merge(adj):
 
 
 if __name__ == "__main__":
+    import os
+
+    this_folder = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(this_folder, 'kargerMinCut.txt')
+
     adj = {}
-    adj[1] = [2, 3, 4, 7]
-    adj[2] = [1, 7]
-    adj[3] = [1, 4, 5]
-    adj[4] = [1, 3, 6, 7]
-    adj[5] = [3, 6, 7]
-    adj[6] = [4, 5, 7]
-    adj[7] = [1, 2, 4, 5, 6]
+    with open(my_file) as f:
+        for line in f:
+            data = list(map(int, line.strip().split("\t")))
+            adj[data[0]] = data[1:]
 
     print(batch_karger_merge(adj))
