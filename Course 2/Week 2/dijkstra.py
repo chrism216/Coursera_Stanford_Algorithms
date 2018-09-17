@@ -5,8 +5,6 @@ import heapq
 
 
 def create_graph(file_name):
-    print("Creating graph...", end=" ")
-    
     this_folder = os.path.dirname(os.path.abspath(__file__))
     my_file = os.path.join(this_folder, file_name)
     
@@ -15,7 +13,6 @@ def create_graph(file_name):
         for line in f:
             tail, *heads = line.strip().split("\t")
             graph[int(tail)] = {int(head.split(",")[0]):int(head.split(",")[1]) for head in heads}
-    print("Done.")
     return graph
 
 
