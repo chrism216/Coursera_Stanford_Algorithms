@@ -17,22 +17,18 @@ def two_sum(numbers, low, high):
     x_pointer = 0
     
     while x_pointer < bot_pointer:
-    # for x_pointer in range(0, len(numbers)):
         while numbers[x_pointer] + numbers[bot_pointer - 1] >= low:
             bot_pointer -= 1
         
-        while numbers[x_pointer] + numbers[top_pointer] > high and top_pointer > bot_pointer:
+        while numbers[x_pointer] + numbers[top_pointer - 1] >= high:
             top_pointer -= 1
 
         for y in numbers[bot_pointer:top_pointer]:
             ts.add(numbers[x_pointer] + y)
 
-        if numbers[x_pointer] + numbers[top_pointer] >= low and numbers[x_pointer] + numbers[top_pointer] <= high:
-            ts.add(numbers[x_pointer] + numbers[top_pointer])
         x_pointer += 1
 
     return ts
-
 
 if __name__ == "__main__":
     numbers = sorted(list(create_set("algo1-programming_prob-2sum.txt")))
