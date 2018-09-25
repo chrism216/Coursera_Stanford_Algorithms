@@ -10,10 +10,11 @@ def create_graph(file_name):
     with open(my_file) as f:
         for i, line in enumerate(f):
             if i > 0:
-                data = list(map(int, line.strip().split(" ")))
-                graph[data[0]][data[1]] = data[2]
+                v1, v2, cost = tuple(map(int, line.strip().split(" ")))
+                graph[v1][v2] = cost
                 # Need both directions, since graph is undirected...
-                graph[data[1]][data[0]] = data[2]
+                graph[v2][v1] = cost
+                
     return graph
 
 def mst(graph):
