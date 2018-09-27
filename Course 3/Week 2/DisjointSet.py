@@ -3,7 +3,6 @@ class Node():
         self.label = label
         self.parent = self
         self.size = 1
-        self.rank = 0
     
     def __eq__(self, other):
         return self.label == other.label
@@ -26,7 +25,6 @@ class DisjointSet():
         self.connected_components += 1
 
     def find(self, node):
-        # Includes path compression
         if node.label not in self.nodes:
             self.makeSet(node)
         if node.parent == node:
@@ -35,7 +33,6 @@ class DisjointSet():
         return node.parent
 
     def union(self, node1, node2):
-        """ Unite self and node"""
         parent1 = self.find(node1)
         parent2 = self.find(node2)
 
