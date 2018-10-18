@@ -9,17 +9,19 @@ class TSP():
         for i in permutations(range(self.n), 2):
             self.distances[i] = euclidian_dist(points[i[0]], points[i[1]])
 
-        A = defaultdict(lambda: inf)
+        A_old = defaultdict(lambda: inf)
         for S in self.generate_sets(1):
-            A[(S, 0)] = 0
+            A_old[(S, 0)] = 0
         
         for m in range(2, self.n + 1):
+            A_new = defaultdict(lambda: inf)
             for S in self.generate_sets(m):
                 for j in S:
                     if j !=0:
-                        A[(S, j)] = min([A[(self.filtered_set(S, j), k)] + 
+                        A_new[(S, j)] = min([A_old[(self.filtered_set(S, j), k)] + 
                             self.distances[(k, j)] for k in self.filtered_set(S, j)])
-        self.shortest_path = min([A[(tuple(range(self.n)), j)] + self.distances[(j, 0)] for j in range(1, self.n)])
+            A_old = A_new
+        self.shortest_path = min([A_new[(tuple(range(self.n)), j)] + self.distances[(j, 0)] for j in range(1, self.n)])
     
     def generate_sets(self, m):
         combs = combinations(range(1, self.n), m - 1)
