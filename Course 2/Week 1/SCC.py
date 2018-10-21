@@ -44,7 +44,7 @@ class DFS_loop:
         
 if __name__ == "__main__":
     graph, graph_rev = defaultdict(set), defaultdict(set)
-    with open("test.txt") as f:
+    with open("SCC.txt") as f:
         for line in f:
             num1, num2 = map(int, line.strip().split(" "))
             graph[num1].add(num2)
